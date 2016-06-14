@@ -9,6 +9,8 @@ RSpec.feature "user can see nearby stores" do
 
     expect(current_path).to eq "/search"
 
+    expect(page).to have_content "Stores within 25 miles of 80202"
+
   end
 end
 
