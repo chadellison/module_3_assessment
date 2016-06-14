@@ -31,4 +31,12 @@ RSpec.describe Api::V1::ItemsController do
     expect(response).to have_http_status(:success)
     expect(Item.count).to eq 0
   end
+
+  it "creates an item" do
+    expect(Item.count).to eq 0
+    post :create, format: :json, post: { name: "Item", description: "this item"}
+    expect(response).to have_http_status(:success)
+
+    expect(Item.count).to eq 1
+  end
 end
