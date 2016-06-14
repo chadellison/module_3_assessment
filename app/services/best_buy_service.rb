@@ -15,6 +15,6 @@ class BestBuyService
   end
 
   def parse(response)
-    JSON.parse(response)[:stores]
+    JSON.parse(response.body, symbolize_names: true)[:stores]
   end
 end
