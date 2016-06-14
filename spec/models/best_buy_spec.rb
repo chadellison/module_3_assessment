@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe BestBuy do
   it "returns the nearby stores" do
-    stores = BestBuy.find_stores
+    stores = BestBuy.find_stores("80202")
     expect(stores.count).to eq 15
     store = stores.last
 

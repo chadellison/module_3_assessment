@@ -2,16 +2,17 @@ class BestBuyService
   attr_reader :connection
 
   def initialize
-    @connection = Faraday.new(url: "https://api.bestbuy.com/v1/stores(area(80202,25))?format=json&show=storeId,storeType,city,distance,phone,location,name&pageSize=15")
+    @connection = Faraday.new(url: "https://api.bestbuy.com/v1/stores")
     @connection.params["apiKey"] = ENV["apiKey"]
   end
 
-  def stores_hash
-    parse(nearby_stores)
+  def stores_hash(zip)
+    parse(nearby_stores(zip))
   end
 
-  def nearby_stores
-    connection.get
+  def nearby_stores(zip)
+    binding.pry
+    connection.get "(area(#{zip},25))?format=json&show=storeId,storeType,city,distance,phone,location,name&pageSize=15"
   end
 
   def parse(response)
