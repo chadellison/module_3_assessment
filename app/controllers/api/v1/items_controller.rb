@@ -10,7 +10,7 @@ class Api::V1::ItemsController < Api::ApiController
   end
 
   def create
-    respond_with Item.create(item_params)
+    respond_with Item.create(item_params), location: nil
   end
 
   def destroy
