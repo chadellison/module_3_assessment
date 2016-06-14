@@ -1,6 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
+      <%= form_tag "/search", method: :get do %>
+        <%= label_tag :search %>
+        <%= text_field_tag :search %>
+        <%= submit_tag "Search" %>
+      <% end %>
       <h1><%= @items.count %> Items</h1>
     </div>
   </div>
@@ -15,4 +20,3 @@
     </div>
   <% end %>
 </div>
-

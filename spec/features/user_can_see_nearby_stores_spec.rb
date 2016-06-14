@@ -4,7 +4,11 @@ RSpec.feature "user can see nearby stores" do
   scenario "user succcessfully sees nearby stores" do
     visit root_path
 
-    fill_in 
+    fill_in "Search", with: "80202"
+    click_on "Search"
+
+    expect(current_path).to eq "/search"
+
   end
 end
 
