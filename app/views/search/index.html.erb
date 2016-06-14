@@ -1,2 +1,11 @@
 <h2>Stores within 25 miles of 80202</h2>
-<%=  %>
+<ul>
+  <% @stores.each do |store| %>
+    <h3>Name: <%= store.name %></h3>
+    <li>City: <%= store.city %></li>
+    <li>Distance: <%= store.distance %></li>
+    <li>Phone: <%= store.phone %></li>
+    <li>Type: <%= store.storeType %></li>
+    <hr>
+  <% end %>
+</ul>
