@@ -16,9 +16,19 @@ RSpec.describe Api::V1::ItemsController do
   it "returns a single item" do
     item = Item.create(name: "great things", description: "it is great")
 
-    get :show, format: :json
+    get :show, id: item.id, format: :json
     expect(response).to have_http_status(:success)
-    item = JSON.pasrse(response.body, symbolize_names: true)
+    item = JSON.parse(response.body, symbolize_names: true)
     expect(item[:name]).to eq "great things"
+  end
+
+  it "deletes an item" do
+    item = Item.create(name: "delete me", description: "do it")
+
+    expect(Item.count).to eq 1
+
+    delete :destroy, id: item.id, format: :json
+    expect(response).to have_http_status(:success)
+    expect(Item.count).to eq 0
   end
 end
